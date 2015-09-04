@@ -1,0 +1,59 @@
+{
+  "name": "postcss-playground",
+  "version": "1.0.0",
+  "description": "Test out PostCSS plugins in a safe and fun environment!",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "directories": {
+    "src": {
+      "root": "./src/",
+      "css": "./src/css/",
+      "js": "./src/js/"
+    },
+    "dist": {
+      "root": "./dist/",
+      "css": "./dist/css/",
+      "js": "./dist/js/"
+    }
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/himynameisdave/postcss-playground.git"
+  },
+  "keywords": [
+    "PostCSS",
+    "postcss-plugins",
+    "CSS",
+    "GUI",
+    "web",
+    "app",
+    "front-end"
+  ],
+  "author": "Dave Lunny",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/himynameisdave/postcss-playground/issues"
+  },
+  "homepage": "https://github.com/himynameisdave/postcss-playground#readme",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "postcss-plugins": "^1.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
+    "babelify": "^6.3.0",
+    "browserify": "^11.0.1",
+    "gulp-load-plugins": "^0.10.0",
+    "loggit": "^0.2.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.4.0"
+  }
+}
