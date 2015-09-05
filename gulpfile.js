@@ -1,9 +1,9 @@
 var gulp         = require('gulp'),
     plug         = require('gulp-load-plugins')(),
-    autoprefixer = require('autoprefixer'),
+    autoprefixer = require('autoprefixer-core'),
     browserify   = require('browserify'),
     source       = require('vinyl-source-stream'),
-    paths        = require('./package.json').paths;// what a great trick
+    paths        = require('./package.json').directories;// what a great trick
 
 
 gulp.task( 'default', [ 'server', 'watch' ]);
@@ -29,21 +29,21 @@ gulp.task( 'watch', function(){
 //  Simply compiles the css
 gulp.task( 'compile-css', function(){
 
-  return gulp.src( paths.css.src+'exports/core.less' )
+  return gulp.src( paths.src.css+'exports/core.less' )
           .pipe( plug.less() )
-          .pipe( gulp.dest( paths.css.src ) );
+          .pipe( gulp.dest( paths.src.css+'exports/' ) );
 
 });
 
 //  Everything beyond compiling the css
 gulp.task( 'build-css', [ 'compile-css' ], function(){
 
-  var postProcessors = [ autoprefixer({ browsers: [ 'last 4 versions', '> 2.5% in CA' ] }) ]
+  var postProcessors = [ autoprefixer({ browsers: [ 'last 4 versions', '> 2.5% in CA', 'ie 9', 'ios 5', 'android 4' ] }) ]
 
   return gulp.src( paths.css.src+'core.css' )
           .pipe(plug.postcss(postProcessors))
           .pipe(plug.cssnano())
-          .pipe(gulp.dest( paths.css.dist ))
+          .pipe(gulp.dest( paths.dist.css ))
 
 });
 
@@ -54,20 +54,20 @@ gulp.task( 'build-css', [ 'compile-css' ], function(){
 //  
 gulp.task( 'build-js', [ 'js-bundle' ], function(){
 
-  return gulp.src( paths.js.src+'bundle.js' )
+  return gulp.src( paths.src.js+'bundle.js' )
             .pipe( plug.uglify({ mangle: false }))
-            .pipe( gulp.dest( paths.js.dist ) );
+            .pipe( gulp.dest( paths.dist.js ) );
 
 });
 
 
 gulp.task( 'js-bundle', function(){
 
-  return browserify( paths.js.src+'main.js' )
+  return browserify( paths.src.js+'main.js' )
           .bundle()
           .on( 'error', function(e){ console.log(e) } )
           .pipe(source('bundle.js'))
-          .pipe(gulp.dest( paths.js.src ));
+          .pipe(gulp.dest( paths.src.js ));
 
 });
 
@@ -84,9 +84,9 @@ gulp.task( 'move-static-assets', function(){
     .pipe( gulp.dest('./dist/') );
 
   //  just moves SVG files now with svgmin
-  return gulp.src( paths.img.src + "*.svg" )
+  return gulp.src( paths.src.img + "*.svg" )
           .pipe( plug.svgmin() )
-          .pipe( gulp.dest( paths.img.dist ) );
+          .pipe( gulp.dest( paths.dist.img ) );
 
 });
 
