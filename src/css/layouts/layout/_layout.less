@@ -1,0 +1,23 @@
+// layout layout
+//
+// layout layout classes.
+//
+// Markup: tests/fixtures/layout.hbs
+//
+// Styleguide layouts.layout
+.l-grid {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.l-grid-col-1 {
+  flex: 1;
+}
+
+.l-grid-col-2 {
+  flex: 1;
+  @media @med1a-small {
+    flex: 2;
+  }
+}

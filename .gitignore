@@ -2,3 +2,5 @@
 /postcss-playground.sublime-workspace
 *.DS_Store
 /node_modules/
+/npm-debug.log
+/src/css/.yo-rc.json

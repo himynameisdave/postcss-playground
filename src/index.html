@@ -16,12 +16,39 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <!--build:css-->
-    <link rel="stylesheet" type="text/css" href="css/core.css">
+    <link rel="stylesheet" type="text/css" href="css/exports/core.css">
     <!--endbuild-->
   </head>
   <body>
-   <h1>Hello World!</h1>
-
+    <main class="main">
+      <header class="l-grid header">
+          <div class="l-grid-col-2">
+            <h1 class="heading heading-t-large heading-t-sans header-logo">
+              postcss-playground
+            </h1>
+            <h2 class="heading heading-t-small heading-t-mono header-subhead">
+              A safe &amp; fun environment to test out PostCSS plugins
+            </h2>
+            <p class="">
+            </p>
+          </div>
+          <div class="l-grid-col-2">
+            <select class="select select-t-primary">
+              <option class="select-option">select plugin</option>
+            </select>
+          </div>
+      </header>
+      <div class="l-grid">
+        <section class="l-grid-col-2 section">
+          <textarea class="textarea textarea-t-output">
+          </textarea>
+        </section>
+        <section class="l-grid-col-2 section">
+          <textarea class="textarea textarea-t-output" disabled>
+          </textarea>
+        </section>
+      </div>
+    </main>
     <!--build:js-->
     <script type="text/javascript" src="js/bundle.js"></script>
     <!--endbuild-->
